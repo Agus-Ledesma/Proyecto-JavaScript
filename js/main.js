@@ -1,40 +1,45 @@
-let nombreCompleto = prompt("Ingrese su nombre: ");
-console.log("Nombre Completo: ", nombreCompleto);
 
+//DEFINICIÓN DE VARIABLES//
+alert ("Complete los siguientes datos para registrarse");
 
-let localidad = prompt("Ingrese su localidad: ");
-console.log("Localidad: ",localidad);
+let NombreCompleto = prompt ("Ingrese su Apellido y Nombre");
+let FechaNacimiento = prompt ("Ingrese su Fecha de Nacimiento");
+let Localidad = prompt ("Ingrese su Localidad");
+let usuario = prompt ("Ingrese su Dirección de correo electrónico");
+let contraseña = prompt ("Defina su Contraseña");
 
+alert (NombreCompleto + ", se ha registrado correctamente");
 
-let edad = prompt("Ingrese su edad: ");
-edad = parseInt(edad); // Convertir la edad a un número entero//
-console.log("Edad: ", edad);
+console.log ("Nombre Completo: " + NombreCompleto);
+console.log ("Localidad: " + Localidad);
+console.log ("Fecha de Nacimiento: " + FechaNacimiento);
+console.log ("Dirección de Correo Electrónico: " + usuario);
+console.log ("Contraseña: " + contraseña);
 
+alert ("Por favor INICIAR SESIÓN para continuar");
 
-let producto = prompt("Ingrese el producto que desea comprar: ");
-console.log("Producto: ", producto);
+// //COMPARACIÓN DE DATOS y CONTROL DEL CICLO//
 
+let login = true
+let intentos = 0
+const maxIntentos = 3
 
-let cantidad = prompt ("Ingrese la cantidad de productos que desea comprar: ");
-cantidad = parseInt(cantidad); // Convertir la cantidad a un número entero//
-console.log("Cantidad: ", cantidad);
+while (login && intentos < maxIntentos)  {
+    let usuarioIngresado = prompt ("Correo Electrónico:");
+    let contraseñaIngresada = prompt ("Contraseña:");
 
-
-let precioUnidad = prompt("Ingrese el precio unitario del producto: ");
-precioUnidad = parseFloat(precioUnidad); // Convertir el precio unitario (string) a un número decimal//
-console.log("Precio Unitario: ", precioUnidad);
-
-const totalNeto = precioUnidad * cantidad;
-console.log("Total Neto: ", totalNeto);
-
-const iva = totalNeto * 0.21; // Calcular el IVA (21% del total neto)//
-console.log("IVA: ", iva);
-
-const totalConIva = totalNeto + iva; // Calcular el total con IVA//
-console.log("Total con IVA: ", totalConIva);
-
-
-alert("Hola " + nombreCompleto + ", " + "Bienvenido!"); 
-alert("El precio total a pagar es: " + totalConIva + " (IVA incluido)");
-
-
+    if (usuarioIngresado === usuario && contraseñaIngresada === contraseña) {
+        alert ("Bienvenido " + NombreCompleto + "!")
+        console.log ("Acceso Correcto. Iniciando sesión...");
+        login = false;
+    } else {
+        intentos++;
+        
+        if (intentos < maxIntentos) {
+            alert ("Error al Inciar Sesión. Datos Incorrectos");
+        } else {
+            alert ("Máximos de intentos alcanzado. Cuenta Bloqueada");
+            console.log ("Cuenta bloqueada por alcanzar el límte de intentos.")
+        }
+    }
+}
